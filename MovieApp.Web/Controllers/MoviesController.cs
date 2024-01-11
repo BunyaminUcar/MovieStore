@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieApp.Web.Models;
+using System.Collections.Generic;
 
 namespace MovieApp.Web.Controllers
 {
@@ -9,9 +11,35 @@ namespace MovieApp.Web.Controllers
         {
             return View();
         }
-        public string List()
+
+
+        public IActionResult List()
         {
-            return "Deneme";
+            var filmlistesi = new List<Movie>() 
+            {
+                new Movie {Title="film1",
+                Description="açıklama 1",
+                Director="Yönetmen 1",
+                Players=new string[] {"oyuncu 1","oyuncu 2"},
+                ImageURL="the boys.jpg"
+                },
+                new Movie {Title="film2",
+                Description="açıklama 2",
+                Director="Yönetmen 2",
+                Players=new string[] {"oyuncu 3","oyuncu 4"},
+                ImageURL="reacher.jpg"
+                },
+                new Movie {Title="film3",
+                Description="açıklama 3",
+                Director="Yönetmen 3",
+                Players=new string[] {"oyuncu 5","oyuncu 6"},
+                ImageURL="vikings.jpg"
+                }
+
+
+
+            };
+            return View("Movies",filmlistesi);
         }
         //localhost:42851/movies/details
         public string Details() {

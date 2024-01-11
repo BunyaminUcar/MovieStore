@@ -10,7 +10,7 @@ namespace MovieApp.Web.Controllers
             string filmBasligi= "film başlığı";
             string filmAciklama="filmin açıklaması";
             string filmYonetmen ="filmin yönetmen adı";
-            string[] oyuncular ={ "oyuncu 1", "oyuncu 2" };
+            string[] oyuncular ={ "oyuncu 1", "oyuncu 2","oyuncu 3" };
 
 
             var m = new Movie();

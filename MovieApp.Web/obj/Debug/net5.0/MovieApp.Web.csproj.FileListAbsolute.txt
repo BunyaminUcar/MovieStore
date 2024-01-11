@@ -37,3 +37,8 @@ C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\MovieApp.W
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\MovieApp.Web.csproj.CopyComplete
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Movies\Movies.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs

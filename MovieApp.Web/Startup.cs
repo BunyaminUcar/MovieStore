@@ -28,6 +28,8 @@ namespace MovieApp.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles(); // wwwroot klasörünü kullanýma açar
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
