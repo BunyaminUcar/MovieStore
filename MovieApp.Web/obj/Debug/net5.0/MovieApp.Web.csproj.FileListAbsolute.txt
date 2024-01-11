@@ -42,3 +42,6 @@ C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\View
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_navbar.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_menu.cshtml.g.cs
