@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieApp.Web.Models;
+using System.Collections.Generic;
 
 namespace MovieApp.Web.Controllers
 {
@@ -19,12 +20,15 @@ namespace MovieApp.Web.Controllers
             m.Description = filmAciklama;
             m.Director = filmYonetmen;
             m.Players = oyuncular;
-
+            m.ImageURL = "reacher.jpg";
 
             return View(m);
         }
         public IActionResult About()
         {
+
+           
+
             return View();
         }
     

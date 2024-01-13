@@ -39,7 +39,17 @@ namespace MovieApp.Web.Controllers
 
 
             };
-            return View("Movies",filmlistesi);
+
+            
+
+            var model = new MovieGenreViewModel()
+            {
+                Movies = filmlistesi
+               
+
+            };
+
+            return View("Movies",model);
         }
         //localhost:42851/movies/details
         public string Details() {
