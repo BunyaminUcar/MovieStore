@@ -8,15 +8,24 @@
 
 
         <div class="collapse navbar-collapse" id="navbarToggler">
-            <a href="#" class="navbar-brand">MovieApp</a>
+            <a href="/" class="navbar-brand">MovieApp</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="/movies/list" class="nav-link">content</a>
+                    <a href="/movies/list" class="nav-link">Movies</a>
                 </li>
             </ul>
-        </div>
+       
+        
+            <form action="/movies/list" method="get" class="form-inline">
+                <input type="text"name="q" placeholder="Film Ara" class="form-control mr-2"/>
+                <button type="submit" class="btn btn-outline-light mr-0">Ara</button>
+            </form>
+        
+        
+        
+        
+        
+            </div>
 
-
-
-    </div>
+     </div>
 </nav>

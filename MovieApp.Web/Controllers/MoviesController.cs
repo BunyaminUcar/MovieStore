@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieApp.Web.Data;
 using MovieApp.Web.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieApp.Web.Controllers
 {
@@ -11,50 +13,41 @@ namespace MovieApp.Web.Controllers
         {
             return View();
         }
+        //localhost:42851/movies/list
+        //localhost:42851/movies/list/?
+        public IActionResult List(int? id,string q)
 
-
-        public IActionResult List()
         {
-            var filmlistesi = new List<Movie>() 
+
+            //var kelime = HttpContext.Request.Query["q"].ToString();
+
+            var movies = MovieRepository.Movies;
+
+            if (id!=null)
             {
-                new Movie {Title="film1",
-                Description="açıklama 1",
-                Director="Yönetmen 1",
-                Players=new string[] {"oyuncu 1","oyuncu 2"},
-                ImageURL="the boys.jpg"
-                },
-                new Movie {Title="film2",
-                Description="açıklama 2",
-                Director="Yönetmen 2",
-                Players=new string[] {"oyuncu 3","oyuncu 4"},
-                ImageURL="reacher.jpg"
-                },
-                new Movie {Title="film3",
-                Description="açıklama 3",
-                Director="Yönetmen 3",
-                Players=new string[] {"oyuncu 5","oyuncu 6"},
-                ImageURL="vikings.jpg"
-                }
+                movies = movies.Where(m => m.GenreId == id).ToList();
+            }
 
-
-
-            };
-
-            
-
-            var model = new MovieGenreViewModel()
+            if (!string.IsNullOrEmpty(q))
             {
-                Movies = filmlistesi
-               
+                movies = movies.Where(i => 
+                    i.Title.ToLower().Contains(q.ToLower()) || 
+                    i.Description.ToLower().Contains(q.ToLower())).ToList();
+            }
+
+            var model = new MoviesViewModel()
+            {
+
+                Movies = movies
 
             };
 
             return View("Movies",model);
         }
-        //localhost:42851/movies/details
-        public string Details() {
+        //localhost:42851/movies/details/?
+        public IActionResult Details(int id) {
 
-            return "Film Detayı";
+            return View(MovieRepository.GetById(id));
         }
     }
 }
