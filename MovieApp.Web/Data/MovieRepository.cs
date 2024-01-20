@@ -74,10 +74,32 @@ namespace MovieApp.Web.Data
         }
 
         public static List<Movie> Movies {  get { return _movies; } }
-        public static void Add(Movie movie) { _movies.Add(movie);  }
+
+        public static void Add(Movie movie)
+        {
+            movie.MovieId = Movies.Count() + 1;
+            _movies.Add(movie);
+
+        }
 
         public static Movie GetById(int id) { 
            
         return _movies.FirstOrDefault(m => m.MovieId == id);}
+
+        public static void Edit(Movie m)
+        {
+            foreach (var movie in _movies)
+            {
+                if (movie.MovieId == m.MovieId)
+                {
+                    movie.Title = m.Title;
+                    movie.Description = m.Description;
+                    movie.Director = m.Director;
+                    movie.ImageURL=m.ImageURL;
+                    movie.GenreId= m.GenreId;
+                    break;
+                }
+            }
+        }
     }
 }

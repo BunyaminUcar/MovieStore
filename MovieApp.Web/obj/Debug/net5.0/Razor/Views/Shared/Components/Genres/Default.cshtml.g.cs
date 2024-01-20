@@ -20,7 +20,7 @@ using MovieApp.Web.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"cdb77db8afc46bd5a4d75fddd15a5b31e1e4222e94c8937fad52f3a1d8e95426", @"/Views/Shared/Components/Genres/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"89cd596eb89630bacd742f4649ad2d4287829f74d2fa44bb7d7f833b1252007d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"122694bc5f38fcdc3216ffd75f1689e1a9b34b2542e47ddcf319cca7739b5ece", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_Genres_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Genre>>
     #nullable disable

@@ -3,18 +3,22 @@ using MovieApp.Web.Data;
 using MovieApp.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MovieApp.Web.Controllers
 {
     public class MoviesController : Controller
     {
         //localhost:42851/movies
+        [HttpGet]
+
         public IActionResult Index()
         {
             return View();
         }
         //localhost:42851/movies/list
         //localhost:42851/movies/list/?
+        [HttpGet]
         public IActionResult List(int? id,string q)
 
         {
@@ -49,5 +53,53 @@ namespace MovieApp.Web.Controllers
 
             return View(MovieRepository.GetById(id));
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+            return View();
+
+        }
+        [HttpPost]
+        public IActionResult Create(Movie m)
+        {
+            //Model Binding
+
+            //var m = new Movie()
+            //{
+            //    Title = Title,
+            //    Description = Description,
+            //    Director = Director,
+            //    ImageURL = ImageURL,
+            //    GenreId = GenreId
+            //};
+            MovieRepository.Add(m);
+
+            return RedirectToAction("List");
+
+
+
+
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {   //Selected list öğeleri gönderiliyor
+            ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+            return View(MovieRepository.GetById(id));
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(Movie m)
+        {
+            MovieRepository.Edit(m);
+            //movies/details/1
+            return RedirectToAction("Details", "Movies",new{@id=m.MovieId});
+
+        }
+
+       
     }
 }
