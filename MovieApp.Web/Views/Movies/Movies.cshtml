@@ -1,31 +1,38 @@
 ﻿@model MoviesViewModel
 
 
-    <h1>Film Listesi</h1>
-    <div id="Filmler">
+<h1>Film Listesi</h1>
+
+<div id="Filmler">
         
-        @if (Model.Movies.Count() > 0)
+    @if (Model.Movies.Count() > 0)
+    {
+
+        @foreach (var movie in Model.Movies)
         {
-
-            @foreach (var movie in Model.Movies)
-            {
-                @await Html.PartialAsync("_movie", movie)
-            }
-
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                Film bilgisi bulunamadı
-
-            </div>
+            @await Html.PartialAsync("_movie", movie)
         }
 
-        
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Film bilgisi bulunamadı.
+
+        </div>
+    }
 
         
 
-    </div>
+</div>
+@if (TempData["Message"] != null)
+{
+    @section message
+    {
+    @await Html.PartialAsync("_message", (string)TempData["Message"])
+    }
+}
+
 
 
 @section menu
