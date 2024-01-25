@@ -50,3 +50,4 @@ C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\View
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Movies\Create.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Movies\Edit.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Shared\_message.cshtml.g.cs
