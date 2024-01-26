@@ -19,8 +19,15 @@ using MovieApp.Web.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\Views\_ViewImports.cshtml"
+using MovieApp.Web.Entity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e", @"/Views/Shared/_movie.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"122694bc5f38fcdc3216ffd75f1689e1a9b34b2542e47ddcf319cca7739b5ece", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA256", @"eacd6f4e8a324ccb74a1833cd021c2b5f6e4a2a69fd5c8032384fb68a828e891", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__movie : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Movie>
     #nullable disable
@@ -89,7 +96,7 @@ WriteAttributeValue("", 178, Model.Title, 178, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("</h5>\r\n                <div>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e6972", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e7159", async() => {
                 WriteLiteral("Details");
             }
             );
@@ -123,7 +130,7 @@ WriteAttributeValue("", 178, Model.Title, 178, 12, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e9516", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e9703", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -157,7 +164,7 @@ WriteAttributeValue("", 178, Model.Title, 178, 12, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    \r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e12078", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6350b08445ea01f65b6058469ce84f79fa65996b8a5fb10bec138d96160d174e12265", async() => {
                 WriteLiteral("\r\n                        <input type=\"hidden\" name=\"Title\"");
                 BeginWriteAttribute("value", " value=\"", 815, "\"", 835, 1);
 #nullable restore

@@ -1,6 +1,8 @@
 ﻿using MovieApp.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using MovieApp.Web.Entity;
+
 namespace MovieApp.Web.Data
 {
     public class GenreRepository

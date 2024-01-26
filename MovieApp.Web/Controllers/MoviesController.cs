@@ -4,6 +4,7 @@ using MovieApp.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MovieApp.Web.Entity;
 
 namespace MovieApp.Web.Controllers
 {
