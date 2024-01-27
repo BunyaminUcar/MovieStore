@@ -27,7 +27,8 @@ namespace MovieApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MovieContext>(
-                options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            options => options.UseSqlServer(Configuration.GetConnectionString("MsSQLConnection")));
+
             services.AddControllersWithViews();
         }
 
@@ -36,7 +37,9 @@ namespace MovieApp.Web
         {
             if (env.IsDevelopment())
             {
+
                 app.UseDeveloperExceptionPage();
+                DataSeeding.Seed(app);
             }
 
             app.UseStaticFiles(); // wwwroot klasörünü kullanýma açar
