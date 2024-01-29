@@ -21,13 +21,7 @@ namespace MovieApp.Web.Data
             {
 
 
-                new Genre
-                {
-                    Name = "Macera", Movies=new List<Movie>()
-
-                    
-
-                },
+                new Genre { Name = "Macera", Movies=new List<Movie>() },
                 new Genre { Name = "Komedi" },
                 new Genre { Name = "Bilim Kurgu" },
                 new Genre { Name = "Drama" },
@@ -44,7 +38,7 @@ namespace MovieApp.Web.Data
                     Description =
                         "Every six years, an ancient order of jiu-jitsu fighters joins forces to battle a vicious race of ali",
                     ImageURL = "vikings.jpg",
-                    Genres= new List<Genre>(){genres[0],  genres[2] }
+                    Genres= new List<Genre>(){genres[3],  genres[2] }
                 },
                 new Movie
                 {
