@@ -14,6 +14,7 @@ namespace MovieApp.Web.Data
         {
             var scope = app.ApplicationServices.CreateScope();
             var context = scope.ServiceProvider.GetService<MovieContext>();
+
             context.Database.Migrate();
 
             var genres = new List<Genre>()
@@ -24,26 +25,7 @@ namespace MovieApp.Web.Data
                 {
                     Name = "Macera", Movies=new List<Movie>()
 
-                    {
-
-                        new Movie
-                        {
-                            Title = "Macera Filmi 1",
-                            Description =
-                                "Every six years, an ancient order of jiu-jitsu fighters joins forces to battle a vicious race of ali",
-                            ImageURL = "vikings.jpg",
-                            
-                        },
-                        new Movie
-                        {
-                            Title = "Macera Filmi 2",
-                            Description =
-                                "A rowdy, unorthodox Santa Claus is fighting to save his declining business. Meanwhile, Billy, a negl",
-                            ImageURL = "reacher.jpg",
-                            
-                        }
-
-                    }
+                    
 
                 },
                 new Genre { Name = "Komedi" },
@@ -62,7 +44,7 @@ namespace MovieApp.Web.Data
                     Description =
                         "Every six years, an ancient order of jiu-jitsu fighters joins forces to battle a vicious race of ali",
                     ImageURL = "vikings.jpg",
-                    Genres= new List<Genre>(){genres[0], new Genre() { Name = "Yeni Tür" }, genres[2] }
+                    Genres= new List<Genre>(){genres[0],  genres[2] }
                 },
                 new Movie
                 {
