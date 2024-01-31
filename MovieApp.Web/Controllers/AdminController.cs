@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieApp.Web.Data;
@@ -49,7 +53,7 @@ namespace MovieApp.Web.Controllers
             return View(entity);
         }
         [HttpPost]
-        public IActionResult MovieUpdate(AdminEditMovieViewModel model, int[] genreIds)
+        public async Task<IActionResult> MovieUpdate(AdminEditMovieViewModel model, int[] genreIds, IFormFile file)
         {
             var entity = _context.Movies.Include("Genres").FirstOrDefault(m => m.MovieId == model.MovieId);
             if (entity == null)
@@ -59,7 +63,19 @@ namespace MovieApp.Web.Controllers
             }
             entity.Title = model.Title;
             entity.Description = model.Description;
-            entity.ImageURL = model.ImageURL;
+            if (file!=null)
+            {
+                var ext = Path.GetExtension(file.FileName);// .jpg or .png
+                var fileName = string.Format($"{Guid.NewGuid()}{ext}");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", fileName);
+                entity.ImageURL = fileName;
+
+                using (var stream=new FileStream(path,FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+
+                }
+            }
             entity.Genres = genreIds.Select(id => _context.Genres.FirstOrDefault(i => i.GenreId == id)).ToList();
 
             _context.SaveChanges();
