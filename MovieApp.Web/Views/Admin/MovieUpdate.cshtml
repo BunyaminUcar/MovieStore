@@ -2,11 +2,11 @@
 <h1>Edit Movie</h1>
 
 <hr />
-<form method="post" asp-controller="Admin" asp-action="MovieUpdate">
+<form method="post" asp-controller="Admin" asp-action="MovieUpdate" enctype="multipart/form-data">
 
-<div class="row">
-    <div class="col-md-8">
-        
+    <div class="row">
+        <div class="col-md-8">
+
 
             <input type="hidden" name="MovieId" value="@Model.MovieId" />
 
@@ -24,36 +24,39 @@
             </div>
 
             <div class="mb-3">
-                <label asp-for="ImageURL"></label>
-                <input asp-for="ImageURL" class="form-control" value="@Model.ImageURL" />
-                <span asp-validation-for="ImageURL" class="text-danger"></span>
+                <input type="file" name="file" class="form-control" />
 
             </div>
-    
+
             <button type="submit" class="btn btn-primary">Submit</button>
 
 
 
-    </div>
-    <div class="col-md-4">
-        
-        @foreach (var item in (List<Genre>)ViewBag.Genres)
-        {
-            <div class="form-check">
-                <input class="form-check-input" 
-                       type="checkbox" 
-                       name="genreIds"
-                       value="@item.GenreId" 
-                       id="genre_@(item.GenreId)" @(Model.SelectedGenres.Any(i=>i.GenreId==item.GenreId)?"checked":"")>
-                <label class="form-check-label" for="genre_@(item.GenreId)">
-                    @item.Name
-                </label>
+        </div>
+        <div class="col-md-4">
+
+            @foreach (var item in (List<Genre>)ViewBag.Genres)
+            {
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="genreIds"
+                           value="@item.GenreId"
+                           id="genre_@(item.GenreId)" @(Model.SelectedGenres.Any(i => i.GenreId == item.GenreId) ? "checked" : "")>
+                    <label class="form-check-label" for="genre_@(item.GenreId)">
+                        @item.Name
+                    </label>
+                </div>
+            }
+
+
+            <div class="mt-3">
+                <img src="/img/@Model.ImageURL" width="150" />
             </div>
-        }
+        </div>
 
-        
+
+
     </div>
-
-</div>
 
 </form>
