@@ -17,51 +17,8 @@ namespace MovieApp.Web.Controllers
         {
             _context = context;
         }
-
-        //localhost:42851/movies
-        [HttpGet]
-
-        public IActionResult Index()
+        public IActionResult Details(int id)
         {
-            return View();
-        }
-        //localhost:42851/movies/list
-        //localhost:42851/movies/list/?
-        [HttpGet]
-        public IActionResult List(int? id,string q)
-
-        {
-
-
-
-            //var movies = MovieRepository.Movies;
-            var movies=_context.Movies.AsQueryable();
-
-            if (id!=null)
-            {
-                movies = movies
-                    .Include(m=>m.Genres)
-                    .Where(m => m.Genres.Any(g=>g.GenreId==id));
-            }
-
-            if (!string.IsNullOrEmpty(q))
-            {
-                movies = movies.Where(i => 
-                    i.Title.ToLower().Contains(q.ToLower()) || 
-                    i.Description.ToLower().Contains(q.ToLower()));
-            }
-
-            var model = new MoviesViewModel()
-            {
-
-                Movies = movies.ToList()
-
-            };
-
-            return View("Movies",model);
-        }
-        //localhost:42851/movies/details/?
-        public IActionResult Details(int id) {
 
             return View(_context.Movies.Find(id));
         }
@@ -72,64 +29,47 @@ namespace MovieApp.Web.Controllers
             return View();
 
         }
-        [HttpPost]
-        public IActionResult Create(Movie m)
-        {
-
-            if (ModelState.IsValid)
-            {
-
-                //MovieRepository.Add(m);
-                _context.Movies.Add(m);
-                _context.SaveChanges();
-                TempData["Message"] = $"{m.Title} isimli film eklendi";
-
-                return RedirectToAction("List");
-
-            }
-            ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
-
-            return View();
-
-        }
-
+        //localhost:42851/movies
         [HttpGet]
-        public IActionResult Edit(int id)
-        {   //Selected list öğeleri gönderiliyor
-            ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
-            return View(_context.Movies.Find(id));
 
-        }
-
-
-        [HttpPost]
-        public IActionResult Edit(Movie m)
+        public IActionResult Index()
         {
-            if (ModelState.IsValid)
+            return View();
+        }
+        //localhost:42851/movies/list
+        //localhost:42851/movies/list/?
+        [HttpGet]
+        public IActionResult List(int? id, string q)
+
+        {
+
+            //var movies = MovieRepository.Movies;
+            var movies = _context.Movies.AsQueryable();
+
+            if (id != null)
             {
-                //MovieRepository.Edit(m);
-                _context.Movies.Update(m);
-                _context.SaveChanges();
-                return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
-
-
+                movies = movies
+                    .Include(m => m.Genres)
+                    .Where(m => m.Genres.Any(g => g.GenreId == id));
             }
-            ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
-            return View(m);
 
+            if (!string.IsNullOrEmpty(q))
+            {
+                movies = movies.Where(i =>
+                    i.Title.ToLower().Contains(q.ToLower()) ||
+                    i.Description.ToLower().Contains(q.ToLower()));
+            }
+
+            var model = new MoviesViewModel()
+            {
+
+                Movies = movies.ToList()
+
+            };
+
+            return View("Movies", model);
         }
 
-        [HttpPost]
-        public IActionResult Delete(int MovieId, string Title)
-        {
-            //MovieRepository.Delete(MovieId);
-            var entity = _context.Movies.Find(MovieId);
-            _context.Movies.Remove(entity);
-            _context.SaveChanges();
-            TempData["Message"] = $"{Title} isimli film silindi";
-            return RedirectToAction("List");
-
-        }
 
     }
 }
