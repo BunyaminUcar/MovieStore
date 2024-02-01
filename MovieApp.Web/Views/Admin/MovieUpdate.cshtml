@@ -27,7 +27,7 @@
                 <input type="file" name="file" class="form-control" />
 
             </div>
-
+            <input type="hidden" name="ImageURL" value="@Model.ImageURL"/>
             <button type="submit" class="btn btn-primary">Submit</button>
 
 
@@ -42,12 +42,15 @@
                            type="checkbox"
                            name="genreIds"
                            value="@item.GenreId"
-                           id="genre_@(item.GenreId)" @(Model.SelectedGenres.Any(i => i.GenreId == item.GenreId) ? "checked" : "")>
+                           id="genre_@(item.GenreId)" 
+                           @(Model.GenreIds!=null?Model.GenreIds.Any(i => i == item.GenreId) ? "checked" : "":"")>
                     <label class="form-check-label" for="genre_@(item.GenreId)">
                         @item.Name
                     </label>
                 </div>
             }
+            <span asp-validation-for="GenreIds" class="text-danger"></span>
+
 
 
             <div class="mt-3">
