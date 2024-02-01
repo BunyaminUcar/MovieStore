@@ -41,7 +41,7 @@ namespace MovieApp.Web.Controllers
                 Title = m.Title,
                 Description = m.Description,
                 ImageURL = m.ImageURL,
-                SelectedGenres = m.Genres
+                GenreIds = m.Genres.Select(i=>i.GenreId).ToArray()
             }).FirstOrDefault(m => m.MovieId == id);
 
             ViewBag.Genres = _context.Genres.ToList();
@@ -55,32 +55,41 @@ namespace MovieApp.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> MovieUpdate(AdminEditMovieViewModel model, int[] genreIds, IFormFile file)
         {
-            var entity = _context.Movies.Include("Genres").FirstOrDefault(m => m.MovieId == model.MovieId);
-            if (entity == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
 
-            }
-            entity.Title = model.Title;
-            entity.Description = model.Description;
-            if (file!=null)
-            {
-                var ext = Path.GetExtension(file.FileName);// .jpg or .png
-                var fileName = string.Format($"{Guid.NewGuid()}{ext}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", fileName);
-                entity.ImageURL = fileName;
 
-                using (var stream=new FileStream(path,FileMode.Create))
+
+                var entity = _context.Movies.Include("Genres").FirstOrDefault(m => m.MovieId == model.MovieId);
+                if (entity == null)
                 {
-                    await file.CopyToAsync(stream);
+                    return NotFound();
 
                 }
+                entity.Title = model.Title;
+                entity.Description = model.Description;
+                if (file != null)
+                {
+                    var ext = Path.GetExtension(file.FileName);// .jpg or .png
+                    var fileName = string.Format($"{Guid.NewGuid()}{ext}");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", fileName);
+                    entity.ImageURL = fileName;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+
+                    }
+                }
+                entity.Genres = genreIds.Select(id => _context.Genres.FirstOrDefault(i => i.GenreId == id)).ToList();
+
+                _context.SaveChanges();
+                return RedirectToAction("MovieList");
+
             }
-            entity.Genres = genreIds.Select(id => _context.Genres.FirstOrDefault(i => i.GenreId == id)).ToList();
 
-            _context.SaveChanges();
-            return RedirectToAction("MovieList");
-
+            ViewBag.Genres = _context.Genres.ToList();
+            return View(model);
         }
 
 
@@ -190,26 +199,33 @@ namespace MovieApp.Web.Controllers
 
         public IActionResult MovieCreate()
         {
-            ViewBag.Genres=_context.Genres.ToList();
-            return View();
+            ViewBag.Genres = _context.Genres.ToList();
+            return View(new AdminCreateMovieModel());
         }
 
         [HttpPost]
-        public IActionResult MovieCreate(Movie m, int[] genreIds)
+        public IActionResult MovieCreate(AdminCreateMovieModel model)
         {
+
+
             if (ModelState.IsValid)
             {
-                m.Genres = new List<Genre>();
-                foreach (var id in genreIds)
+                var entity = new Movie
                 {
-                    m.Genres.Add(_context.Genres.FirstOrDefault(i=>i.GenreId==id));
+                    Title = model.Title,
+                    Description = model.Description,
+                    ImageURL = "non.jpg"
+                };
+                foreach (var id in model.GenreIds)
+                {
+                    entity.Genres.Add(_context.Genres.FirstOrDefault(i => i.GenreId == id));
                 }
-                _context.Movies.Add(m);
+                _context.Movies.Add(entity);
                 _context.SaveChanges();
                 return RedirectToAction("MovieList", "Admin");
             }
             ViewBag.Genres = _context.Genres.ToList();
-            return View();
+            return View(model);
         }
     }
 }
