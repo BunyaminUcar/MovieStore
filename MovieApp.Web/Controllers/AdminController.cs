@@ -17,13 +17,13 @@ using static MovieApp.Web.Models.AdminMoviesViewModel;
 
 namespace MovieApp.Web.Controllers
 {
-        [Authorize]
+    [Authorize]
 
 
-        public class AdminController : Controller
+    public class AdminController : Controller
     {
         private readonly MovieContext _context;
-        
+
         public AdminController(MovieContext context)
         {
             _context = context;
@@ -45,7 +45,7 @@ namespace MovieApp.Web.Controllers
                 Title = m.Title,
                 Description = m.Description,
                 ImageURL = m.ImageURL,
-                GenreIds = m.Genres.Select(i=>i.GenreId).ToArray()
+                GenreIds = m.Genres.Select(i => i.GenreId).ToArray()
             }).FirstOrDefault(m => m.MovieId == id);
 
             ViewBag.Genres = _context.Genres.ToList();
@@ -96,7 +96,7 @@ namespace MovieApp.Web.Controllers
             return View(model);
         }
 
-        
+
         public IActionResult MovieList()
         {
             return View(new AdminMoviesViewModel
@@ -201,7 +201,7 @@ namespace MovieApp.Web.Controllers
             return RedirectToAction("MovieList");
         }
         [HttpGet]
-        
+
         public IActionResult MovieCreate()
         {
             ViewBag.Genres = _context.Genres.ToList();
@@ -209,7 +209,7 @@ namespace MovieApp.Web.Controllers
         }
 
         [HttpPost]
-        
+
         public IActionResult MovieCreate(AdminCreateMovieModel model)
         {
 
