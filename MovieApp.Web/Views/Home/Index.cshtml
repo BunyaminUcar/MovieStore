@@ -7,13 +7,13 @@
 }
 
 
-        <h1>Filmler</h1>
+<h1>Filmler</h1>
 
-        <div id="Filmler">
+<div id="Filmler">
     @foreach (var movie in Model.PopularMovies)
     {
-        @await Html.PartialAsync("_movie",movie)
+        @await Html.PartialAsync("_movie", movie)
 
     }
-         
-            </div>
+
+</div>

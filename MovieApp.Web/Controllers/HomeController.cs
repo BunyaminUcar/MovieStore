@@ -16,23 +16,20 @@ namespace MovieApp.Web.Controllers
         }
         public IActionResult Index()
         {
-            var model= new HomePageViewModel 
-            { 
+            var model = new HomePageViewModel
+            {
 
                 PopularMovies = _context.Movies.ToList()
-                
-                };
+
+            };
 
 
             return View(model);
         }
         public IActionResult About()
         {
-
-           
-
             return View();
         }
-    
+
     }
 }

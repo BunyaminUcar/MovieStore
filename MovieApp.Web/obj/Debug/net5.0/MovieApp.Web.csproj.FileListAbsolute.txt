@@ -107,3 +107,4 @@ C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\View
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Admin\GenreList.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Admin\GenreUpdate.cshtml.g.cs
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Admin\MovieCreate.cshtml.g.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs

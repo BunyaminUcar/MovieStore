@@ -3,12 +3,14 @@ using MovieApp.Web.Data;
 using MovieApp.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieApp.Web.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace MovieApp.Web.Controllers
 {
+    
     public class MoviesController : Controller
     {
         private readonly MovieContext _context;
