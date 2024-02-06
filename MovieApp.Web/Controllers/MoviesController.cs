@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MovieApp.Web.Controllers
 {
-    
-    public class MoviesController : Controller
+
+        public class MoviesController : Controller
     {
         private readonly MovieContext _context;
 

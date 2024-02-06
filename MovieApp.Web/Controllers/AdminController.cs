@@ -17,9 +17,10 @@ using static MovieApp.Web.Models.AdminMoviesViewModel;
 
 namespace MovieApp.Web.Controllers
 {
-    [Authorize]
+        [Authorize]
 
-    public class AdminController : Controller
+
+        public class AdminController : Controller
     {
         private readonly MovieContext _context;
         
