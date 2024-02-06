@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +17,12 @@ using static MovieApp.Web.Models.AdminMoviesViewModel;
 
 namespace MovieApp.Web.Controllers
 {
+    [Authorize]
+
     public class AdminController : Controller
     {
         private readonly MovieContext _context;
-
+        
         public AdminController(MovieContext context)
         {
             _context = context;
@@ -92,7 +95,7 @@ namespace MovieApp.Web.Controllers
             return View(model);
         }
 
-
+        
         public IActionResult MovieList()
         {
             return View(new AdminMoviesViewModel
@@ -196,7 +199,8 @@ namespace MovieApp.Web.Controllers
 
             return RedirectToAction("MovieList");
         }
-
+        [HttpGet]
+        
         public IActionResult MovieCreate()
         {
             ViewBag.Genres = _context.Genres.ToList();
@@ -204,6 +208,7 @@ namespace MovieApp.Web.Controllers
         }
 
         [HttpPost]
+        
         public IActionResult MovieCreate(AdminCreateMovieModel model)
         {
 
