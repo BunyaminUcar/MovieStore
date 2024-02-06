@@ -45,21 +45,17 @@ namespace MovieApp.Web
             //});
 
             services.AddMvc();
-            services.AddAuthentication(
-                CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(x =>
-                    {
-                        x.LoginPath = "/Login/Index";
-                    }
-                );
-
-            services.ConfigureApplicationCookie(options =>
+            services.AddAuthentication(options =>
                 {
-                    options.Cookie.HttpOnly=true;
+                    options.DefaultAuthenticateScheme = "Identity.Application";
+                    options.DefaultSignInScheme = "Identity.Application";
+                    options.DefaultChallengeScheme = "Identity.Application";
+                })
+                .AddCookie("Identity.Application", options =>
+                {
                     options.LoginPath = "/Login/Index";
-                    options.SlidingExpiration = true;
-                }
-            );
+                    
+                });
 
         }
 
@@ -72,13 +68,9 @@ namespace MovieApp.Web
                 DataSeeding.Seed(app);
             }
             app.UseStaticFiles(); // wwwroot klasörünü kullanýma açar
-
-            app.UseAuthentication();
-            
             app.UseRouting();
-            
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -90,6 +82,7 @@ namespace MovieApp.Web
                     );
 
             });
+
         }
     }
 }
