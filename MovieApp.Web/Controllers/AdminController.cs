@@ -19,7 +19,6 @@ namespace MovieApp.Web.Controllers
 {
     [Authorize]
 
-
     public class AdminController : Controller
     {
         private readonly MovieContext _context;
@@ -117,15 +116,7 @@ namespace MovieApp.Web.Controllers
 
         public IActionResult GenreList()
         {
-            return View(new AdminGenresViewModel
-            {
-                Genres = _context.Genres.Select(g => new AdminGenreViewModel
-                {
-                    GenreId = g.GenreId,
-                    Name = g.Name,
-                    Count = g.Movies.Count
-                }).ToList()
-            });
+            return View(GetGenres());
         }
 
         public IActionResult GenreUpdate(int? id)
@@ -157,6 +148,34 @@ namespace MovieApp.Web.Controllers
 
 
         }
+
+        private AdminGenresViewModel GetGenres()
+        {
+            return new AdminGenresViewModel
+            {
+                Genres = _context.Genres.Select(g => new AdminGenreViewModel
+                {
+                    GenreId = g.GenreId,
+                    Name = g.Name,
+                    Count = g.Movies.Count
+                }).ToList()
+            };
+        }
+        [HttpPost]
+        public IActionResult GenreCreate(AdminGenresViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Genres.Add(new Genre { Name = model.Name });
+                _context.SaveChanges();
+                return RedirectToAction("GenreList");
+
+            }
+
+            return View("GenreList", GetGenres());
+
+        }
+
         [HttpPost]
         public ActionResult GenreUpdate(AdminGenreEditViewModel model, int[] movieIds)
         {
