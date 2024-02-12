@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using MovieApp.Web.Entity;
 
 namespace MovieApp.Web.Models
 {
     public class AdminGenresViewModel
     {
+        [Required(ErrorMessage = "Entering genre information is required!")]
+        [StringLength(25, MinimumLength = 3,ErrorMessage = "Type information must be between 3 and 25 characters")]
+        public string Name { get; set; }
         public List<AdminGenreViewModel> Genres { get; set; }
     }
 
