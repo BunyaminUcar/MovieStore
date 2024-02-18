@@ -123,3 +123,4 @@ C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\bin\Debug\net5.0\NSwag.Gene
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\bin\Debug\net5.0\NSwag.Generation.AspNetCore.dll
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\bin\Debug\net5.0\YamlDotNet.dll
 C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\MovieApp.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\UCAR\source\repos\MovieApp.Web\MovieApp.Web\obj\Debug\net5.0\Razor\Views\User\CreateUser.cshtml.g.cs

@@ -179,20 +179,30 @@ namespace MovieApp.Web.Controllers
         [HttpPost]
         public ActionResult GenreUpdate(AdminGenreEditViewModel model, int[] movieIds)
         {
-            var entity = _context.Genres.Include("Movies").FirstOrDefault(i => i.GenreId == model.GenreId);
-            if (entity == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-            entity.Name = model.Name;
-            foreach (var id in movieIds)
-            {
-                entity.Movies.Remove(entity.Movies.FirstOrDefault(m => m.MovieId == id));
 
+
+                var entity = _context.Genres.Include("Movies").FirstOrDefault(i => i.GenreId == model.GenreId);
+                if (entity == null)
+                {
+                    return NotFound();
+                }
+                entity.Name = model.Name;
+                foreach (var id in movieIds)
+                {
+                    entity.Movies.Remove(entity.Movies.FirstOrDefault(m => m.MovieId == id));
+
+                }
+                _context.SaveChanges();
+                return RedirectToAction("GenreList");
             }
-            _context.SaveChanges();
-            return RedirectToAction("GenreList");
+
+            return View(model);
+
+
         }
+
 
         [HttpPost]
         public IActionResult GenreDelete(int genreId)
@@ -252,5 +262,9 @@ namespace MovieApp.Web.Controllers
             ViewBag.Genres = _context.Genres.ToList();
             return View(model);
         }
+
+
     }
+
+
 }

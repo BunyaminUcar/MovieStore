@@ -25,6 +25,7 @@ namespace MovieApp.Web.Models
     public class AdminGenreEditViewModel
     {
         public int GenreId { get; set; }
+        [Required(ErrorMessage = "Entering genre information is required!")]
         public string Name { get; set; }
         public List<AdminMoviesViewModel.AdminMovieViewModel> Movies { get; set; }
     }
